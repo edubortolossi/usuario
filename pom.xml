@@ -11,7 +11,7 @@
     <groupId>com.br</groupId>
     <artifactId>usuario</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>relogio</name>
+    <name>usuario</name>
     <description>Api rest de usuarios</description>
 
     <properties>
