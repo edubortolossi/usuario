@@ -10,9 +10,12 @@ import jdk.nashorn.internal.runtime.ParserException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.PersistenceException;
+import javax.validation.ConstraintViolationException;
 import java.text.ParseException;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -25,6 +28,11 @@ public class UsuarioService {
     DateTimeFormatter parser = DateTimeFormatter.ofPattern( "dd/MM/uuuu" );
 
     public Long salvar( UsuarioDto usuarioDto ) throws Exception {
+        final List< UsuarioEntity > usuarios = usuarioRepository.findByEmail( usuarioDto.getEmail() );
+
+        if( usuarios.size() > 0 ) {
+            throw new BusinessException( "Email já cadastrado", usuarioDto.getEmail() );
+        }
         return usuarioRepository.save( UsuarioAdapter.requestToDomain( usuarioDto ) ).getId();
     }
 

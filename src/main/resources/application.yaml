@@ -1,0 +1,10 @@
+app:
+  resttemplate:
+    timeout: 30000
+
+info:
+  build:
+    version: '@project.version@'
+
+server:
+  port: 8090

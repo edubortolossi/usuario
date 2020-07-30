@@ -8,8 +8,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface UsuarioRepository extends CrudRepository< UsuarioEntity, Long> {
-
-    List< UsuarioEntity > findByDataInicioVigenciaAndDataFimVigencia( LocalDate inicioVigencia, LocalDate fimVigencia );
-
+public interface UsuarioRepository extends CrudRepository< UsuarioEntity, Long > {
+    List< UsuarioEntity > findByEmail( String email );
 }

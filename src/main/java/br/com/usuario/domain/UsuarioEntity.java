@@ -4,6 +4,7 @@ import br.com.usuario.enums.Time;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,6 +23,7 @@ public class UsuarioEntity {
 
     private Time time;
 
+    @Column( unique = true )
     private String email;
 
     private LocalDate dataNascimento;
@@ -34,5 +36,6 @@ public class UsuarioEntity {
         this.dataNascimento = dataNascimento;
     }
 
-    public UsuarioEntity() {}
+    public UsuarioEntity() {
+    }
 }
